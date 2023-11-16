@@ -1,6 +1,7 @@
 from flask import Flask, request, redirect
 import string
 import random
+import json
 
 form = \
 '''
@@ -28,7 +29,14 @@ form = \
 
 app = Flask(__name__)
 
-url_mapping = {}
+def load_mappings():
+    try:
+        with open('data.json', 'r') as file:
+            return json.load(file)
+    except FileNotFoundError:
+        return {}
+
+url_mapping = load_mappings()
 
 def generate_short_url():
     characters = string.ascii_letters + string.digits
@@ -40,16 +48,23 @@ def generate_short_url():
 def index():
     return form
 
+
+def save_mappings():
+    with open('data.json', 'w') as file:
+        json.dump(url_mapping, file, indent=4)
+
 @app.route('/shorten', methods=['POST'])
 def shorten():
     long_url = request.form.get('long_url')
     if long_url:
         short_url = generate_short_url()
         url_mapping[short_url] = long_url
+        save_mappings()
         print(url_mapping)
         return f'Shortened URL: {request.host_url}{short_url}'
     else:
         return 'Please provide a URL to shorten.'
+    
 
 @app.route('/<short_url>')
 def redirect_to_original(short_url):
