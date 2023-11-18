@@ -1,5 +1,4 @@
 import pytest
-from flask import Flask
 from url_shortener import app, url_mapping
 
 @pytest.fixture

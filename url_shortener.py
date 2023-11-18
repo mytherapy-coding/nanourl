@@ -7,7 +7,7 @@ import string
 import random
 import json
 import os
-from flask import Flask, request, redirect
+import flask
 
 FORM = \
 '''
@@ -33,7 +33,7 @@ FORM = \
 
 
 
-app = Flask(__name__)
+app = flask.Flask(__name__)
 
 def load_mappings():
     '''
@@ -122,13 +122,13 @@ def shorten():
     Raises:
         ValueError: If the submitted form data is invalid.
     '''
-    long_url = request.form.get('long_url')
+    long_url = flask.request.form.get('long_url')
     if long_url:
         short_url = generate_short_url()
         url_mapping[short_url] = long_url
         save_mappings()
         print(url_mapping)
-        return f'Shortened URL: {request.host_url}{short_url}'
+        return f'Shortened URL: {flask.request.host_url}{short_url}'
     return 'Please provide a URL to shorten.'
 
 @app.route('/<short_url>')
@@ -151,6 +151,6 @@ def redirect_to_original(short_url):
     '''
     long_url = url_mapping.get(short_url)
     if long_url:
-        return redirect(long_url)
+        return flask.redirect(long_url)
     return 'Short URL not found.'
     
