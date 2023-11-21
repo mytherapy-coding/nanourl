@@ -9,26 +9,6 @@ import json
 import os
 import flask
 
-FORM = """
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>URL Shortener</title>
-</head>
-<body>
-    <h2>Shorten a URL</h2>
-    <form method="post" action="/shorten">
-        <label for="long_url">Enter URL:</label>
-        <input type="text" id="long_url" name="long_url" required>
-        <button type="submit">Shorten</button>
-    </form>
-</body>
-</html>
-"""
-
 
 app = flask.Flask(__name__)
 
@@ -86,7 +66,8 @@ def index():
         >>> index()
         '<!DOCTYPE html>...</html>'
     """
-    return FORM
+    print("Index is called")
+    return flask.render_template("index.html")
 
 
 def save_mappings():
@@ -123,6 +104,7 @@ def shorten():
         ValueError: If the submitted form data is invalid.
     """
     long_url = flask.request.form.get("long_url")
+    print("Shorten is called", long_url)
     if long_url:
         short_url = generate_short_url()
         url_mapping[short_url] = long_url
@@ -150,6 +132,7 @@ def redirect_to_original(short_url):
             If the short URL is not found, a message indicating that
             the short URL is not found.
     """
+    print("redirect is called", short_url)
     long_url = url_mapping.get(short_url)
     if long_url:
         return flask.redirect(long_url)
