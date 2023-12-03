@@ -5,13 +5,29 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>URL Shortener</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
 </head>
 <body>
-    <h2>Shorten a URL!!!</h2>
-    <form method="post" action="/shorten">
-        <label for="long_url">Enter URL:</label>
-        <input type="text" id="long_url" name="long_url" required>
-        <button type="submit">Shorten</button>
-    </form>
+    <header>
+        <h1>Welcome to the URL Shortener</h1>
+    </header>
+
+    <main>
+        <section id="shorten-section">
+            <h2>Shorten a URL</h2>
+            <form method="post" action="/shorten">
+                <label for="long_url">Enter URL:</label>
+                <input type="text" id="long_url" name="long_url" required>
+                <button type="submit">Shorten</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2023 URL Shortener. All rights reserved.</p>
+    </footer>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>
 </html>

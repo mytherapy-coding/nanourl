@@ -1,0 +1,44 @@
+body, header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    background: linear-gradient(135deg, #FFD8D8, #FFEAC6, #CCEEEE, #D8FAD8, #FEECD8, #FFD8D8);
+    background-size: 400% 400%;
+    animation: gradientAnimation 15s infinite alternate-reverse;
+}
+
+@keyframes gradientAnimation {
+    0% {
+        background-position: 0% 0%;
+    }
+    100% {
+        background-position: 100% 100%;
+    }
+}
+
+header {
+    width: 100%;
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.8); /* Light background color */
+    border-radius: 10px; /* Rounded corners */
+    padding: 20px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3); /* Shadow effect */
+    margin: 10px; /*Add margin for better spacing */
+}
+
+main {
+    flex-grow: 1;
+    padding: 20px;
+    text-align: center;
+}
+
+h1, h2 {
+    color: #1a237e; /* Darker text color */
+    margin: 0; /* Remove default margin */
+}
+
+body {
+    min-height: 100vh;
+}
