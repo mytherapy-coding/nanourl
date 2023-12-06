@@ -16,7 +16,17 @@ http://127.0.0.1:5000
 127.0.0.1 - my IP adress 
 5000 - port 
 
+---
 
-docker build --tag nanourl .
+python main.py
+
+pip install -r requirements.txt (install dependencies)
+
+---
+docker build --tag nanourl . (--tag - name the image)
+
+docker run -p 5000:5000 nanourl (-p - port)
+
+---
 
 
