@@ -17,3 +17,6 @@ http://127.0.0.1:5000
 5000 - port 
 
 
+docker build --tag nanourl .
+
+
