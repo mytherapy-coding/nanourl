@@ -29,4 +29,4 @@ docker run -p 5000:5000 nanourl (-p - port)
 
 ---
 
-
+curl http://localhost:5000 ()
