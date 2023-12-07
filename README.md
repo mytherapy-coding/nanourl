@@ -1,32 +1,42 @@
 # My project
 
 run time dependencies instal Flask - framework - my computer communicates with the clients's one 
+```sh
 pip instal Flask 
------
+```
+
 for development:
-
+```sh
 pip install pytest pylint
-------
+```
 
+```sh
 pytest .
+```
+
+```sh
 pylint *q.py
------
+```
 
-http://127.0.0.1:5000
-127.0.0.1 - my IP adress 
-5000 - port 
-
----
-
+```sh
 python main.py
+```
 
-pip install -r requirements.txt (install dependencies)
+install dependencies
+```sh
+pip install -r requirements.txt 
+```
 
----
-docker build --tag nanourl . (--tag - name the image)
+--tag - name the image
+```sh
+docker build --tag nanourl . 
+```
+-p -- port
+```sh
+docker run -p 5000:5000 nanourl 
+```
 
-docker run -p 5000:5000 nanourl (-p - port)
+```sh
+curl http://localhost:5000 
+```
 
----
-
-curl http://localhost:5000 ()
