@@ -1,6 +1,6 @@
 version: '3'
 services:
-  web:
+  nanourl: 
     build:
       context: .
       dockerfile: Dockerfile
